@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Reflection - Student Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            padding: 48px;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .language-switcher {
+            margin-bottom: 40px;
+        }
+
+        .lang-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            margin: 0 8px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .lang-btn:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6b5b95);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #4c63d2, #5a4fcf);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .reflection-form {
+            text-align: left;
+        }
+
+        .question-group {
+            margin-bottom: 32px;
+            padding: 32px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+
+        .question-group::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 0 20px 20px 0;
+        }
+
+        .question-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #334155, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 18px;
+            display: block;
+            position: relative;
+        }
+
+        .question-label::before {
+            content: '💭';
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .question-input {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .question-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            border: none;
+            padding: 18px 48px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 32px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6b5b95 50%, #e085e8 100%);
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px;
+                margin: 16px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .title::after {
+                right: -30px;
+                font-size: 1.2rem;
+            }
+            
+            .lang-btn {
+                padding: 12px 20px;
+                margin: 4px;
+                font-size: 0.9rem;
+            }
+            
+            .question-group {
+                padding: 24px;
+            }
+        }
+
+        /* Progress indicator */
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-indicator" id="progressIndicator"></div>
+    <div class="container">
+        <div class="header">
+            <h1 class="title" id="pageTitle">Course Reflection</h1>
+            <p class="subtitle" id="pageSubtitle">Share your experience and insights about the course</p>
+        </div>
+
+        <div class="language-switcher">
+            <button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">English</button>
+            <button class="lang-btn" onclick="switchLanguage('fr')" data-lang="fr">Français</button>
+            <button class="lang-btn" onclick="switchLanguage('es')" data-lang="es">Español</button>
+        </div>
+
+        <form class="reflection-form" id="reflectionForm">
+            <div class="question-group">
+                <label class="question-label" for="question1" id="question1Label">
+                    What did you enjoy most about the course?
+                </label>
+                <textarea 
+                    class="question-input" 
+                    id="question1" 
+                    name="question1" 
+                    placeholder="Share your thoughts about what you enjoyed most..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="question-group">
+                <label class="question-label" for="question2" id="question2Label">
+                    What was the most challenging part?
+                </label>
+                <textarea 
+                    class="question-input" 
+                    id="question2" 
+                    name="question2" 
+                    placeholder="Describe the challenges you faced..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="question-group">
+                <label class="question-label" for="question3" id="question3Label">
+                    What could be improved?
+                </label>
+                <textarea 
+                    class="question-input" 
+                    id="question3" 
+                    name="question3" 
+                    placeholder="Share your suggestions for improvement..."
+                    required
+                ></textarea>
+            </div>
+
+            <div style="text-align: center;">
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit Reflection
+                </button>
+            </div>
+        </form>
+
+        <div class="footer">
+            <p id="footerText">Course Management Platform - Student Reflection</p>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="index.js"></script>
+</body>
+</html> 
