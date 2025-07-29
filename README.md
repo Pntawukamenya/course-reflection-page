@@ -41,38 +41,6 @@ A multilingual student reflection form built with HTML, CSS, and JavaScript usin
 - `index.js` - JavaScript functionality using i18next
 - `README.md` - This file
 
-## 🌐 Setup for GitHub Pages
-
-1. **Create a new GitHub repository**
-   - Go to GitHub and create a new repository
-   - Name it something like `course-reflection-page`
-
-2. **Upload the files**
-   - Upload these files to your repository:
-     - `index.html`
-     - `i18n-config.js`
-     - `index.js`
-
-3. **Configure GitHub Pages**
-   - Go to your repository Settings
-   - Scroll down to "Pages" section
-   - Select "Deploy from a branch"
-   - Choose "main" branch and "/ (root)" folder
-   - Click "Save"
-
-4. **Your page will be available at**
-   ```
-   https://yourusername.github.io/repository-name
-   ```
-
-## 🎨 Customization
-
-To add more languages or modify the questions:
-
-1. Edit `i18n-config.js` to add new language objects
-2. Update the language buttons in `index.html`
-3. Modify the question text in both files
-
 ## 📝 License
 
 This project is open source and available under the MIT License.
